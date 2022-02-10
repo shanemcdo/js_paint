@@ -15,6 +15,7 @@ function setup(){
     els.erase_color.addEventListener('change', update_brush);
     els.brush_shape.addEventListener('change', update_brush);
     els.brush_size.addEventListener('change', update_brush);
+    reset();
 }
 
 function windowResized(){
@@ -41,6 +42,20 @@ function mouseDragged(event){
     prev_mouse = pos;
 }
 
+function keyPressed(){
+    switch (key) {
+        case 'R':
+        case 'r':
+            reset();
+            break;
+        case 'S':
+        case 's':
+            swap_colors();
+            break;
+        default:
+            console.log(keyCode);
+    }
+}
 
 function draw_point(pos){
     push()

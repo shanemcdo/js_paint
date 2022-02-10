@@ -1,5 +1,14 @@
-function main(){
-    console.log('Hello World!');
+const els = {
+};
+
+function setup(){
+    createCanvas(windowWidth, windowHeight);
 }
 
-main();
+function windowResized(){
+    resizeCanvas(windowWidth, windowHeight);
+}
+
+function draw(){
+    
+}

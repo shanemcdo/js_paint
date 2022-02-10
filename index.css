@@ -31,6 +31,7 @@ body{
 
 .dropdown-content {
     display: none;
+    white-space: nowrap;
 }
 
 .dropdown-content input{

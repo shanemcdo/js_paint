@@ -11,6 +11,19 @@
         <div class="dropdown">
             <div class=dropdown-icon>▼</div>
             <div class=dropdown-content>
+                <label for='brush-color'>Brush Color</label>
+                <input type="color" name="brush-color" id="brush-color" value="#000000">
+                <label for='erase-color'>Erase Color</label>
+                <input type="color" name="erase-color" id="erase-color" value="#ffffff">
+                <button onclick="swap_colors();">Swap Colors</button>
+                <label for="brush-size">Brush Size</label>
+                <input type="range" name="brush-size" id="brush-size" value=20 min=1 max=500 step=any >
+                <label for="brush-shape">Brush Shape</label>
+                <select name="brush-shape" id="brush-shape">
+                    <option value="circle">Circle</option>
+                    <option value="square">Square</option>
+                </select>
+                <button onclick="reset();">Reset</button>
                 <a class=link href="https://github.com/kermitpurple/js_paint">Source</a>
             </div>
         </div>

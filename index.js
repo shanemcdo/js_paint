@@ -1,3 +1,4 @@
+const LINE_DENSITY = 500;
 let prev_mouse = null;
 const els = {
     'brush_color': document.querySelector('#brush-color'),
@@ -7,15 +8,17 @@ const els = {
     'canvas': null,
 };
 let brush = {};
+
 const POINT_FUNCS = {
     'circle': draw_point,
     'square': draw_square,
 };
+
 const LINE_FUNCS = {
     'circle': draw_line,
     'square': draw_square_line,
 };
-const LINE_DENSITY = 500;
+
 
 function setup(){
     els.canvas = createCanvas(windowWidth, windowHeight);

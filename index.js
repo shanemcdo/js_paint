@@ -23,8 +23,8 @@ const LINE_FUNCS = {
 function setup(){
     els.canvas = createCanvas(windowWidth, windowHeight);
     update_brush();
-    els.brush_color.addEventListener('change', update_brush);
-    els.erase_color.addEventListener('change', update_brush);
+    els.brush_color.addEventListener('input', update_brush);
+    els.erase_color.addEventListener('input', update_brush);
     els.brush_shape.addEventListener('change', update_brush);
     els.brush_size.addEventListener('change', update_brush);
     rectMode(CENTER);

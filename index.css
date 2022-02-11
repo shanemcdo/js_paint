@@ -5,7 +5,7 @@
 
 html,
 body{
-    overflow: hidden;
+    background: black;
     font-family: 'Source Sans Pro', sans-serif;
     margin: 0;
     padding: 0;

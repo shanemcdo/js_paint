@@ -32,10 +32,6 @@ function setup(){
     reset();
 }
 
-function windowResized(){
-    resizeCanvas(windowWidth, windowHeight);
-}
-
 function draw(){}
 
 function mousePressed(event){
@@ -123,6 +119,7 @@ function update_brush(){
 }
 
 function reset(){
+    resizeCanvas(windowWidth, windowHeight);
     background(brush.bg_color);
 }
 

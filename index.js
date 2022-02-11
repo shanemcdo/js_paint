@@ -7,6 +7,15 @@ const els = {
     'canvas': null,
 };
 let brush = {};
+const POINT_FUNCS = {
+    'circle': draw_point,
+    'square': draw_square,
+};
+const LINE_FUNCS = {
+    'circle': draw_line,
+    'square': draw_square_line,
+};
+const LINE_DENSITY = 500;
 
 function setup(){
     els.canvas = createCanvas(windowWidth, windowHeight);
@@ -15,6 +24,8 @@ function setup(){
     els.erase_color.addEventListener('change', update_brush);
     els.brush_shape.addEventListener('change', update_brush);
     els.brush_size.addEventListener('change', update_brush);
+    rectMode(CENTER);
+    angleMode(DEGREES);
     reset();
 }
 
@@ -28,7 +39,7 @@ function mousePressed(event){
     if(event.target !== canvas)
         return;
     let pos = createVector(mouseX, mouseY);
-    draw_point(pos);
+    POINT_FUNCS[brush.shape](pos);
     prev_mouse = pos;
 }
 
@@ -37,7 +48,7 @@ function mouseDragged(event){
         return;
     let pos = createVector(mouseX, mouseY);
     if(prev_mouse !== null){
-        draw_line(prev_mouse, pos);
+        LINE_FUNCS[brush.shape](prev_mouse, pos);
     }
     prev_mouse = pos;
 }
@@ -61,8 +72,16 @@ function draw_point(pos){
     push()
     stroke(brush.fg_color);
     fill(brush.fg_color);
-    strokeWeight(brush.radius);
+    strokeWeight(brush.size);
     point(pos);
+    pop();
+}
+
+function draw_square(pos){
+    push()
+    stroke(brush.fg_color);
+    fill(brush.fg_color);
+    square(pos.x, pos.y, brush.size);
     pop();
 }
 
@@ -70,8 +89,24 @@ function draw_line(start, end){
     push()
     stroke(brush.fg_color);
     fill(brush.fg_color);
-    strokeWeight(brush.radius);
+    strokeWeight(brush.size);
     line(start.x, start.y, end.x, end.y);
+    pop();
+}
+
+function draw_square_line(start, end){
+    push();
+    stroke(brush.fg_color);
+    fill(brush.fg_color);
+    let heading = end.copy().sub(start).heading();
+    for(let i = 0; i < LINE_DENSITY; i++){
+        let r = i / LINE_DENSITY * start.dist(end);
+        square(
+            cos(heading) * r + start.x,
+            sin(heading) * r + start.y,
+            brush.size,
+        );
+    }
     pop();
 }
 
@@ -80,7 +115,7 @@ function update_brush(){
         'fg_color': els.brush_color.value,
         'bg_color': els.erase_color.value,
         'shape': els.brush_shape.value,
-        'radius': parseFloat(els.brush_size.value),
+        'size': parseFloat(els.brush_size.value),
     }
 }
 

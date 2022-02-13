@@ -1,5 +1,7 @@
+const history = [];
 const LINE_DENSITY = 500;
 let prev_mouse = null;
+let history_index = -1;
 const els = {
     'brush_color': document.querySelector('#brush-color'),
     'erase_color': document.querySelector('#erase-color'),
@@ -72,8 +74,14 @@ function mouseDragged(event){
     prev_mouse = pos;
 }
 
+function mouseReleased(event){
+    if(event.target !== canvas)
+        return;
+    add_to_history();
+}
+
 function keyPressed(){
-    switch (key) {
+    switch(key){
         case 'R':
         case 'r':
             reset();
@@ -81,6 +89,12 @@ function keyPressed(){
         case 'S':
         case 's':
             swap_colors();
+            break;
+        case 'u':
+            undo();
+            break;
+        case 'U':
+            redo();
             break;
     }
 }
@@ -139,6 +153,7 @@ function update_brush(){
 function reset(){
     resizeCanvas(windowWidth, windowHeight);
     background(brush.bg_color);
+    add_to_history();
 }
 
 function swap_colors(){
@@ -146,4 +161,50 @@ function swap_colors(){
     els.brush_color.value = els.erase_color.value;
     els.erase_color.value = temp;
     update_brush();
+}
+
+function undo(){
+    history_index--;
+    if(history_index >= 0){
+        copy(
+            history[history_index],
+            0, 0,
+            width, height,
+            0, 0,
+            width, height,
+        );
+    }else{
+        history_index = 0;
+    }
+}
+
+function redo(){
+    history_index++;
+    if(history_index < history.length){
+        copy(
+            history[history_index],
+            0, 0,
+            width, height,
+            0, 0,
+            width, height,
+        );
+    }else{
+        history_index = history.length - 1;
+    }
+}
+
+
+function add_to_history(){
+    let buffer = createGraphics(width, height);
+    buffer.copy(
+        els.canvas,
+        0, 0,
+        width, height,
+        0, 0,
+        width, height,
+    );
+    if(++history_index >= 0){
+        history.length = history_index;
+    }
+    history.push(buffer);
 }

@@ -34,6 +34,26 @@ function setup(){
 
 function draw(){}
 
+function windowResized(){
+    let buffer = createGraphics(windowWidth, windowHeight);
+    buffer.copy(
+        els.canvas,
+        0, 0,
+        windowWidth, windowHeight,
+        0, 0,
+        windowWidth, windowHeight,
+    );
+    resizeCanvas(windowWidth, windowHeight);
+    background(brush.bg_color);
+    copy(
+        buffer,
+        0, 0,
+        windowWidth, windowHeight,
+        0, 0,
+        windowWidth, windowHeight,
+    );
+}
+
 function mousePressed(event){
     if(event.target !== canvas)
         return;
@@ -62,8 +82,6 @@ function keyPressed(){
         case 's':
             swap_colors();
             break;
-        default:
-            console.log(keyCode);
     }
 }
 

@@ -8,6 +8,19 @@ const els = {
     'brush_shape': document.querySelector('#brush-shape'),
     'brush_size': document.querySelector('#brush-size'),
     'canvas': null,
+    'palette': [
+        document.querySelector('#palette-0'),
+        document.querySelector('#palette-1'),
+        document.querySelector('#palette-2'),
+        document.querySelector('#palette-3'),
+        document.querySelector('#palette-4'),
+        document.querySelector('#palette-5'),
+        document.querySelector('#palette-6'),
+        document.querySelector('#palette-7'),
+        document.querySelector('#palette-8'),
+        document.querySelector('#palette-9'),
+    ],
+
 };
 let brush = {};
 
@@ -95,6 +108,19 @@ function keyPressed(){
             break;
         case 'U':
             redo();
+            break;
+        case '0':
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+            els.brush_color.value = els.palette[parseInt(key)].value;
+            update_brush();
             break;
     }
 }

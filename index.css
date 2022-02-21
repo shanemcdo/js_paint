@@ -13,11 +13,14 @@ body{
     height: 100%;
 }
 
-.dropdown{
-    z-index: 3;
+.floating{
     position: absolute;
     left: 10px;
     top: 10px;
+}
+
+.dropdown{
+    z-index: 3;
     padding: 4px;
     border-radius: 6px;
     color: var(--fg);
@@ -42,13 +45,13 @@ body{
     display: inline;
 }
 
-.dropdown:focus-within .dropdown-icon,
-.dropdown:hover .dropdown-icon{
+.dropdown:focus-within > .dropdown-icon,
+.dropdown:hover > .dropdown-icon{
     display: none;
 }
 
-.dropdown:focus-within .dropdown-content,
-.dropdown:hover .dropdown-content{
+.dropdown:focus-within > .dropdown-content,
+.dropdown:hover > .dropdown-content{
     display: block;
 }
 
@@ -84,4 +87,9 @@ label,
 input{
     display: block;
     width: 90%;
+}
+
+.palette-item{
+    display: inline !important;
+    margin-left: 3px;
 }

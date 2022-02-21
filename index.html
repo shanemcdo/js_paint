@@ -8,7 +8,7 @@
         <script src="index.js" defer></script>
     </head>
     <body>
-        <div class="dropdown">
+        <div class="dropdown floating">
             <div class=dropdown-icon>▼</div>
             <div class=dropdown-content>
                 <label for='brush-color'>Brush Color</label>
@@ -23,6 +23,19 @@
                     <option value="circle">Circle</option>
                     <option value="square">Square</option>
                 </select>
+                <details>
+                    <summary>Palette</summary>
+                    <div class=palette-div>0<input type="color" name="palette-0" class="palette-item" id="palette-0" value="#FFFFFF"></div>
+                    <div class=palette-div>1<input type="color" name="palette-1" class="palette-item" id="palette-1" value="#000000"></div>
+                    <div class=palette-div>2<input type="color" name="palette-2" class="palette-item" id="palette-2" value="#ff0000"></div>
+                    <div class=palette-div>3<input type="color" name="palette-3" class="palette-item" id="palette-3" value="#ffbf00"></div>
+                    <div class=palette-div>4<input type="color" name="palette-4" class="palette-item" id="palette-4" value="#80ff00"></div>
+                    <div class=palette-div>5<input type="color" name="palette-5" class="palette-item" id="palette-5" value="#00ff40"></div>
+                    <div class=palette-div>6<input type="color" name="palette-6" class="palette-item" id="palette-6" value="#00ffff"></div>
+                    <div class=palette-div>7<input type="color" name="palette-7" class="palette-item" id="palette-7" value="#0040ff"></div>
+                    <div class=palette-div>8<input type="color" name="palette-8" class="palette-item" id="palette-8" value="#8000ff"></div>
+                    <div class=palette-div>9<input type="color" name="palette-9" class="palette-item" id="palette-9" value="#ff00bf"></div>
+                </details>
                 <button onclick="saveCanvas();">Save</button>
                 <button onclick="reset();">Reset</button>
                 <a class=link href="https://github.com/kermitpurple/js_paint">Source</a>

@@ -47,8 +47,6 @@ function setup(){
     reset();
 }
 
-function draw(){}
-
 function windowResized(){
     let buffer = createGraphics(windowWidth, windowHeight);
     buffer.copy(

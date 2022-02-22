@@ -122,6 +122,16 @@ function keyPressed(){
             els.brush_color.value = els.palette[parseInt(key)].value;
             update_brush();
             break;
+        case '-':
+        case '_':
+            els.brush_size.value = parseInt(els.brush_size.value) - 1;
+            update_brush();
+            break;
+        case '=':
+        case '+':
+            els.brush_size.value = parseInt(els.brush_size.value) + 1;
+            update_brush();
+            break;
     }
 }
 

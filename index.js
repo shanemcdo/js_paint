@@ -130,6 +130,9 @@ function keyPressed(){
             els.brush_size.value = parseInt(els.brush_size.value) + 1;
             update_brush();
             break;
+		case 'p':
+			save_as_image();
+			break;
     }
 }
 
@@ -241,4 +244,8 @@ function add_to_history(){
         history.length = history_index;
     }
     history.push(buffer);
+}
+
+function save_as_image() {
+	saveCanvas('js_paint.jpg');
 }

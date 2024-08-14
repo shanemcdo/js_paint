@@ -16,13 +16,6 @@
                 <label for='erase-color'>Erase Color</label>
                 <input type="color" name="erase-color" id="erase-color" value="#ffffff">
                 <button onclick="swap_colors();">Swap Colors</button>
-                <label for="brush-size">Brush Size</label>
-                <input type="range" name="brush-size" id="brush-size" value=3 min=1 max=500 step=any >
-                <label for="brush-shape">Brush Shape</label>
-                <select name="brush-shape" id="brush-shape">
-                    <option value="circle">Circle</option>
-                    <option value="square">Square</option>
-                </select>
                 <details>
                     <summary>Palette</summary>
                     <div class=palette-div>0<input type="color" name="palette-0" class="palette-item" id="palette-0" value="#FFFFFF"></div>
@@ -36,7 +29,14 @@
                     <div class=palette-div>8<input type="color" name="palette-8" class="palette-item" id="palette-8" value="#8000ff"></div>
                     <div class=palette-div>9<input type="color" name="palette-9" class="palette-item" id="palette-9" value="#ff00bf"></div>
                 </details>
-                <button onclick="saveCanvas();">Save</button>
+                <label for="brush-size">Brush Size</label>
+                <input type="range" name="brush-size" id="brush-size" value=3 min=1 max=500 step=any >
+                <label for="brush-shape">Brush Shape</label>
+                <select name="brush-shape" id="brush-shape">
+                    <option value="circle">Circle</option>
+                    <option value="square">Square</option>
+                </select>
+                <button onclick="save_as_image();">Save As Image</button>
                 <button onclick="reset();">Reset</button>
                 <details>
                     <summary>Controls</summary>
@@ -75,6 +75,10 @@
                             <tr>
                                 <th>+</th>
                                 <th>Increase Brush Size</th>
+                            </tr>
+                            <tr>
+                                <th>p</th>
+                                <th>Save as image</th>
                             </tr>
                         </tbody>
                     </table>

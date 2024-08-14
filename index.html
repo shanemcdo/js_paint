@@ -36,8 +36,10 @@
                     <option value="circle">Circle</option>
                     <option value="square">Square</option>
                 </select>
-                <button onclick="save_as_image();">Save As Image</button>
                 <button onclick="reset();">Reset</button>
+                <button onclick="save_as_image();">Save As Image</button>
+				<input type="file" id="load-image" accept="image/*" />
+                <button onclick="load_image();">Load An Image</button>
                 <details>
                     <summary>Controls</summary>
                     <table>

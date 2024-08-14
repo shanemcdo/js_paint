@@ -20,7 +20,7 @@ const els = {
         document.querySelector('#palette-8'),
         document.querySelector('#palette-9'),
     ],
-
+	'load_image': document.querySelector('#load-image'),
 };
 let brush = {};
 
@@ -44,6 +44,7 @@ function setup(){
     els.brush_size.addEventListener('change', update_brush);
     rectMode(CENTER);
     angleMode(DEGREES);
+	imageMode(CORNERS)
     reset();
 }
 
@@ -248,4 +249,10 @@ function add_to_history(){
 
 function save_as_image() {
 	saveCanvas('js_paint.jpg');
+}
+
+function load_image() {
+	loadImage(URL.createObjectURL(els.load_image.files[0]), img => {
+		image(img, 0, 0, width, height);
+	});
 }

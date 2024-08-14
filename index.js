@@ -253,6 +253,6 @@ function save_as_image() {
 
 function load_image() {
 	loadImage(URL.createObjectURL(els.load_image.files[0]), img => {
-		image(img, 0, 0, width, height);
+		image(img, 0, 0, width, height, 0, 0, img.width, img.height, CONTAIN);
 	});
 }

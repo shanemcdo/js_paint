@@ -13,6 +13,13 @@ body{
     height: 100%;
 }
 
+html,
+body,
+main,
+canvas{
+	overflow: hidden;
+}
+
 .floating{
     position: absolute;
     left: 10px;

@@ -256,9 +256,11 @@ function save_as_image() {
 
 function load_image() {
 	if(els.load_image.files.length < 1){
+		els.load_image.click();
 		return;
 	}
 	loadImage(URL.createObjectURL(els.load_image.files[0]), img => {
 		image(img, 0, 0, width, height, 0, 0, img.width, img.height, CONTAIN);
+		add_to_history();
 	});
 }

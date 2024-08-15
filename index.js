@@ -134,6 +134,9 @@ function keyPressed(){
 		case 'p':
 			save_as_image();
 			break;
+		case 'l':
+			load_image();
+			break;
     }
 }
 
